@@ -1,0 +1,1724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#000000" />
+<title>Insomnia Jiu Jitsu — Daytona Beach</title>
+<meta name="description" content="Where champions are built and beginners belong. Brazilian Jiu Jitsu in Daytona Beach, Florida. Your first class is on us." />
+
+<!-- Favicon: the eye mark as an inline SVG data URI -->
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><rect width="100" height="60" fill="black"/><g fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L26 12 M6 30 L26 48 M94 30 L74 12 M94 30 L74 48"/><circle cx="50" cy="30" r="14"/></g><circle cx="50" cy="30" r="5" fill="white"/></svg>' />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+/* ----------------------------------------------------------------------
+   DESIGN TOKENS
+   ---------------------------------------------------------------------- */
+:root{
+  --bg:           #000000;
+  --bg-elev:      #0a0a0a;
+  --bg-section:   #111111;
+  --bg-card:      #161616;
+  --bg-card-2:    #1a1a1a;
+  --border:       rgba(255,255,255,0.08);
+  --border-strong:rgba(255,255,255,0.16);
+  --text:         #ffffff;
+  --text-muted:   rgba(255,255,255,0.62);
+  --text-dim:     rgba(255,255,255,0.42);
+  --gold:         #C9A84C;
+  --gold-bright:  #E0BC5E;
+  --gold-deep:    #8a7028;
+
+  --maxw:         1200px;
+  --maxw-narrow:  920px;
+  --pad-x:        clamp(20px, 4vw, 48px);
+
+  --tracking-brand: 0.32em;
+  --tracking-eyebrow: 0.28em;
+  --tracking-tight: -0.02em;
+
+  --radius-sm: 10px;
+  --radius:    16px;
+  --radius-lg: 24px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ----------------------------------------------------------------------
+   RESET + BASE
+   ---------------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{
+  -webkit-text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  scroll-behavior:smooth;
+}
+body{
+  font-family:'Manrope', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:17px;
+  line-height:1.55;
+  font-weight:400;
+  overflow-x:hidden;
+  letter-spacing:-0.005em;
+}
+img,svg,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+
+::selection{background:var(--gold);color:#000}
+
+/* Subtle film grain on the page – Apple-style atmosphere */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1000;
+  opacity:.035;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+}
+
+/* ----------------------------------------------------------------------
+   LAYOUT PRIMITIVES
+   ---------------------------------------------------------------------- */
+.container{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:var(--pad-x);
+}
+.container--narrow{max-width:var(--maxw-narrow)}
+.section{
+  position:relative;
+  padding-block: clamp(80px, 12vw, 160px);
+}
+.section--alt   { background:var(--bg-section); }
+.section--elev  { background:var(--bg-elev); }
+.section--flush { padding-block: 0; }
+
+/* ----------------------------------------------------------------------
+   TYPOGRAPHY
+   ---------------------------------------------------------------------- */
+.eyebrow{
+  display:inline-block;
+  font-size:12px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:var(--tracking-eyebrow);
+  color:var(--gold);
+}
+.h-display{
+  font-size:clamp(44px, 8.4vw, 116px);
+  line-height:.98;
+  letter-spacing:var(--tracking-tight);
+  font-weight:700;
+}
+.h1{
+  font-size:clamp(36px, 5.6vw, 72px);
+  line-height:1.04;
+  letter-spacing:-0.02em;
+  font-weight:700;
+}
+.h2{
+  font-size:clamp(28px, 3.4vw, 44px);
+  line-height:1.1;
+  letter-spacing:-0.015em;
+  font-weight:600;
+}
+.h3{
+  font-size:clamp(20px, 1.8vw, 24px);
+  line-height:1.25;
+  letter-spacing:-0.01em;
+  font-weight:600;
+}
+.lede{
+  font-size:clamp(18px, 1.45vw, 22px);
+  line-height:1.55;
+  color:var(--text-muted);
+  font-weight:300;
+  max-width:62ch;
+}
+.muted{color:var(--text-muted)}
+.dim{color:var(--text-dim)}
+
+/* ----------------------------------------------------------------------
+   BRAND MARK (the word INSOMNIA with eye replacing O)
+   ---------------------------------------------------------------------- */
+.brand{
+  display:inline-flex;align-items:center;
+  letter-spacing:var(--tracking-brand);
+  font-weight:300;
+  color:var(--text);
+  user-select:none;
+  font-feature-settings:"ss01";
+}
+.brand__text{font-weight:300}
+.brand__eye{
+  display:inline-flex;
+  width:1.32em;height:.85em;
+  margin: 0 0.04em;
+  position:relative;top:.02em;
+}
+.brand--lg{font-size:24px;letter-spacing:.34em}
+.brand--xl{font-size:clamp(40px,7vw,88px);letter-spacing:.22em;font-weight:200}
+.brand--xl .brand__eye{width:1.2em;height:.78em}
+
+/* The eye icon by itself (footer / favicon use) */
+.eye-mark{
+  width:64px;height:38px;
+  color:var(--text);
+}
+
+/* ----------------------------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.5em;
+  padding: 14px 28px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.01em;
+  transition:transform .25s var(--ease-out), background .25s, color .25s, border-color .25s;
+  white-space:nowrap;
+}
+.btn--primary{
+  background:var(--gold);
+  color:#0a0a0a;
+}
+.btn--primary:hover{background:var(--gold-bright);transform:translateY(-1px)}
+.btn--ghost{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--border-strong);
+}
+.btn--ghost:hover{border-color:var(--text);transform:translateY(-1px)}
+.btn--link{
+  padding:0;
+  color:var(--gold);
+  font-weight:500;
+}
+.btn--link::after{
+  content:"→";
+  transition:transform .25s var(--ease-out);
+  display:inline-block;
+}
+.btn--link:hover::after{transform:translateX(4px)}
+.btn--lg{padding:18px 36px;font-size:16px}
+
+/* ----------------------------------------------------------------------
+   NAV
+   ---------------------------------------------------------------------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;
+  display:flex;align-items:center;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom:1px solid transparent;
+  transition: background .3s, border-color .3s;
+}
+.nav.is-scrolled{
+  background: rgba(0,0,0,0.78);
+  border-bottom-color: var(--border);
+}
+.nav__inner{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:var(--pad-x);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;
+}
+.nav__brand{
+  display:inline-flex;align-items:center;
+  font-size:14px;
+  letter-spacing:.32em;
+  font-weight:400;
+}
+.nav__brand .brand__eye{width:1.32em;height:.85em}
+
+.nav__links{
+  display:flex;align-items:center;gap:32px;
+  font-size:13px;
+  color:var(--text-muted);
+  font-weight:500;
+}
+.nav__links a{transition:color .2s}
+.nav__links a:hover{color:var(--text)}
+
+.nav__cta{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--gold);
+  color:#0a0a0a;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13px;font-weight:600;
+  transition: background .25s, transform .25s var(--ease-out);
+}
+.nav__cta:hover{background:var(--gold-bright);transform:translateY(-1px)}
+
+.nav__burger{
+  display:none;
+  width:36px;height:36px;
+  align-items:center;justify-content:center;
+  border-radius:8px;
+}
+.nav__burger span{
+  display:block;width:18px;height:1.5px;background:var(--text);
+  position:relative;transition:transform .3s, opacity .2s;
+}
+.nav__burger span::before,.nav__burger span::after{
+  content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--text);
+  transition:transform .3s;
+}
+.nav__burger span::before{top:-6px}
+.nav__burger span::after { top:6px}
+
+.is-mobile-open .nav__burger span{background:transparent}
+.is-mobile-open .nav__burger span::before{transform:translateY(6px) rotate(45deg)}
+.is-mobile-open .nav__burger span::after{ transform:translateY(-6px) rotate(-45deg)}
+
+@media (max-width: 860px){
+  .nav__links, .nav__cta{display:none}
+  .nav__burger{display:inline-flex}
+}
+
+/* Mobile sheet — covers full viewport, sits below nav (z 200) */
+.mobile-sheet{
+  position:fixed;inset:0;z-index:150;
+  background:#000;
+  background-image:
+    radial-gradient(900px 500px at 50% -10%, rgba(201,168,76,0.10), transparent 60%),
+    linear-gradient(180deg, #050505 0%, #000 100%);
+  padding: 84px var(--pad-x) 40px;  /* 60px nav + 24px breathing room */
+  transform:translateY(-12px);
+  opacity:0;pointer-events:none;
+  transition: transform .35s var(--ease-out), opacity .25s;
+  display:flex;flex-direction:column;gap:6px;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.is-mobile-open .mobile-sheet{
+  transform:translateY(0);opacity:1;pointer-events:auto;
+}
+/* Lock background scroll while menu is open */
+body.is-mobile-open{
+  overflow:hidden;
+  touch-action:none;
+}
+.mobile-sheet a{
+  display:block;
+  font-size:24px;
+  font-weight:500;
+  letter-spacing:-0.01em;
+  padding: 14px 0;
+  border-bottom:1px solid var(--border);
+}
+.mobile-sheet .btn{
+  margin-top: 40px;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 18px 36px;
+  font-size: 16px;
+  border: 0;
+  border-radius: 999px;
+}
+
+/* ----------------------------------------------------------------------
+   HERO
+   ---------------------------------------------------------------------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  padding-top:60px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero__bg{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, rgba(201,168,76,0.12), transparent 60%),
+    radial-gradient(900px 500px at 50% 110%,  rgba(201,168,76,0.08), transparent 60%),
+    linear-gradient(180deg, #050505 0%, #0a0a0a 50%, #000 100%);
+}
+/* Subtle line texture / mat reference */
+.hero__bg::after{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(transparent 96%, rgba(255,255,255,0.025) 96%),
+    linear-gradient(90deg, transparent 96%, rgba(255,255,255,0.025) 96%);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+.hero__inner{
+  padding: 80px 0 120px;
+  max-width: 1100px;
+}
+.hero__eyebrow{margin-bottom:24px}
+.hero__title{
+  font-size:clamp(44px, 8.6vw, 124px);
+  line-height:0.96;
+  letter-spacing:-0.025em;
+  font-weight:700;
+  background: linear-gradient(180deg, #fff 0%, #b9b9b9 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  margin-bottom: 28px;
+}
+.hero__title em{
+  font-style:normal;
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold-deep) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero__sub{
+  font-size:clamp(17px, 1.4vw, 21px);
+  color:var(--text-muted);
+  max-width: 56ch;
+  margin: 0 auto 44px;
+  font-weight:300;
+}
+.hero__cta{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+.hero__scroll{
+  position:absolute;left:50%;bottom:36px;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.3em;color:var(--text-dim);
+  text-transform:uppercase;
+}
+.hero__scroll::after{
+  content:"";display:block;
+  width:1px;height:36px;
+  background:linear-gradient(180deg, var(--text-dim), transparent);
+  animation: drip 2.4s ease-in-out infinite;
+}
+@keyframes drip{
+  0%  { opacity:.2; transform:scaleY(0.4); transform-origin:top}
+  50% { opacity:.9; transform:scaleY(1)}
+  100%{ opacity:.2; transform:scaleY(0.4); transform-origin:bottom}
+}
+
+/* ----------------------------------------------------------------------
+   ABOUT
+   ---------------------------------------------------------------------- */
+.about{
+  text-align:center;
+}
+.about__title{margin: 18px auto 32px}
+.about__lede{margin: 0 auto}
+.about__stats{
+  margin-top: 80px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+.stat{
+  background:var(--bg);
+  padding: 36px 24px;
+  text-align:center;
+}
+.stat__num{
+  font-size:clamp(40px, 5vw, 64px);
+  font-weight:700;
+  letter-spacing:-0.03em;
+  color:var(--gold);
+  line-height:1;
+}
+.stat__label{
+  display:block;
+  margin-top:10px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.2em;
+  color:var(--text-muted);
+}
+@media (max-width: 720px){
+  .about__stats{grid-template-columns:1fr;}
+}
+
+/* ----------------------------------------------------------------------
+   PROGRAMS
+   ---------------------------------------------------------------------- */
+.section-head{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  margin-bottom: 64px;
+  gap:16px;
+}
+.section-head .eyebrow{margin-bottom:0}
+.section-head p{max-width:60ch;color:var(--text-muted);font-weight:300}
+
+.programs-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:20px;
+}
+@media (max-width: 760px){ .programs-grid{ grid-template-columns:1fr } }
+
+.prog-card{
+  position:relative;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding: 40px;
+  min-height: 320px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
+  isolation:isolate;
+  transition: border-color .3s, transform .4s var(--ease-out);
+}
+.prog-card:hover{ border-color:var(--border-strong); transform:translateY(-2px) }
+
+.prog-card::before{
+  content:"";
+  position:absolute;inset:auto -40% -60% auto;
+  width:90%;aspect-ratio:1;border-radius:50%;
+  background: radial-gradient(circle at center, rgba(201,168,76,0.16), transparent 60%);
+  z-index:-1;
+  transition: transform .6s var(--ease-out), opacity .4s;
+  opacity:.7;
+}
+.prog-card:hover::before{transform:scale(1.1);opacity:1}
+
+.prog-card__icon{
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border:1px solid var(--border-strong);
+  border-radius:14px;
+  color:var(--gold);
+  margin-bottom: 28px;
+}
+.prog-card__title{ margin-bottom: 12px }
+.prog-card__desc{ color:var(--text-muted); font-weight:300; font-size:15.5px }
+.prog-card__meta{
+  margin-top:24px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:var(--text-dim);
+}
+
+/* ----------------------------------------------------------------------
+   SCHEDULE
+   ---------------------------------------------------------------------- */
+.schedule{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:12px;
+}
+@media (max-width:1000px){ .schedule{ grid-template-columns:repeat(2,1fr) } }
+@media (max-width:560px){ .schedule{ grid-template-columns:1fr } }
+
+.day{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding: 24px 20px;
+  display:flex;flex-direction:column;gap:14px;
+  min-height: 200px;
+}
+.day--accent{
+  background: linear-gradient(180deg, rgba(201,168,76,0.06), rgba(201,168,76,0.0));
+  border-color: rgba(201,168,76,0.18);
+}
+.day__name{
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.slot{
+  padding: 12px 14px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+.slot__time{
+  font-size:13px;
+  color:var(--gold);
+  font-weight:600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing:.02em;
+}
+.slot__title{
+  margin-top:4px;
+  font-size:14.5px;
+  font-weight:500;
+  letter-spacing:-0.005em;
+}
+.slot--ghost{
+  background:transparent;border-style:dashed;
+  display:flex;align-items:center;justify-content:center;
+  min-height:64px;color:var(--text-dim);
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+}
+
+/* ----------------------------------------------------------------------
+   INSTRUCTORS
+   ---------------------------------------------------------------------- */
+.instructors{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+@media (max-width:900px){ .instructors{ grid-template-columns:1fr } }
+
+.coach{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition: border-color .3s, transform .4s var(--ease-out);
+}
+.coach:hover{ border-color:var(--border-strong); transform:translateY(-2px); }
+.coach__portrait{
+  position:relative;
+  aspect-ratio: 4 / 5;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 35%, rgba(201,168,76,0.28), transparent 60%),
+    linear-gradient(180deg, #1a1a1a 0%, #050505 100%);
+  display:grid;place-items:center;
+  overflow:hidden;
+}
+.coach__portrait::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,0.6), transparent 60%);
+}
+/* Belt stripe accent on portrait */
+.coach__belt{
+  position:absolute;left:0;right:0;bottom:0;height:8px;
+  background:var(--belt-color, #000);
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+.coach__belt::after{
+  content:"";position:absolute;right:24px;top:0;bottom:0;width:32px;
+  background:rgba(255,255,255,0.85);
+}
+.coach--black .coach__belt{ --belt-color:#0a0a0a }
+.coach--brown .coach__belt{ --belt-color:#5b3a1f }
+.coach--purple .coach__belt{ --belt-color:#3a1f5b }
+
+.coach__monogram{
+  font-size:96px;
+  font-weight:200;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,0.08);
+  position:absolute;
+  font-family: 'Manrope', system-ui;
+}
+.coach__body{
+  padding: 28px 28px 32px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.coach__rank{
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+}
+.coach__name{ font-size:24px; font-weight:600; letter-spacing:-0.01em }
+.coach__bio{ color:var(--text-muted); font-size:14.5px; font-weight:300; line-height:1.6 }
+.coach__creds{
+  margin-top:8px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+  display:flex;flex-wrap:wrap;gap:6px;
+}
+.cred{
+  font-size:11px;
+  letter-spacing:.05em;
+  padding: 5px 10px;
+  border-radius:999px;
+  background:rgba(201,168,76,0.08);
+  color:var(--gold);
+  border:1px solid rgba(201,168,76,0.18);
+}
+
+/* ----------------------------------------------------------------------
+   COMPETITION FEATURE
+   ---------------------------------------------------------------------- */
+.comp{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.comp__bg{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(800px 400px at 80% 20%, rgba(201,168,76,0.16), transparent 55%),
+    radial-gradient(700px 500px at 10% 90%, rgba(201,168,76,0.08), transparent 60%),
+    linear-gradient(180deg,#0a0a0a,#050505);
+}
+.comp__grid{
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items:center;
+}
+@media (max-width:880px){ .comp__grid{ grid-template-columns:1fr } }
+
+.comp__text h2{ margin: 18px 0 24px }
+.comp__text p{ color:var(--text-muted); font-weight:300; max-width:54ch }
+.comp__cta{ margin-top:32px }
+
+.podium{
+  position:relative;
+  aspect-ratio: 4/5;
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  background:
+    linear-gradient(180deg, #161616 0%, #0a0a0a 100%);
+  overflow:hidden;
+  padding: 40px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.podium__medal{
+  position:absolute;top:36px;left:36px;
+  width:56px;height:56px;border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, var(--gold-bright), var(--gold) 50%, var(--gold-deep) 100%);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.25);
+  display:grid;place-items:center;
+  color:#1a1a1a;font-weight:700;
+  font-size:14px;letter-spacing:0;
+}
+.podium__title{
+  font-size:clamp(28px, 3vw, 44px);
+  font-weight:700;
+  letter-spacing:-0.02em;
+  line-height:1.04;
+}
+.podium__title em{ font-style:normal; color:var(--gold) }
+.podium__list{
+  margin-top:24px;
+  display:flex;flex-direction:column;gap:10px;
+  font-size:13px;color:var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.podium__list li{
+  display:flex;justify-content:space-between;
+  padding-bottom: 10px;
+  border-bottom:1px solid var(--border);
+}
+.podium__list li:last-child{border-bottom:0}
+.podium__list span:last-child{ color:var(--gold); font-weight:600 }
+
+/* ----------------------------------------------------------------------
+   FULL-WIDTH CTA BANNER
+   ---------------------------------------------------------------------- */
+.cta-banner{
+  text-align:center;
+  background:
+    radial-gradient(900px 500px at 50% 50%, rgba(201,168,76,0.16), transparent 60%),
+    linear-gradient(180deg, #0a0a0a, #000);
+  border-block:1px solid var(--border);
+  padding-block: clamp(80px, 10vw, 140px);
+}
+.cta-banner h2{ font-size:clamp(36px, 6vw, 80px); line-height:1; letter-spacing:-0.025em; max-width:18ch; margin: 0 auto 16px }
+.cta-banner p{ color:var(--text-muted); font-weight:300; margin-bottom:36px }
+
+/* ----------------------------------------------------------------------
+   PRICING
+   ---------------------------------------------------------------------- */
+.pricing-callout{
+  display:flex;align-items:center;gap:14px;
+  padding: 14px 22px;
+  background: rgba(201,168,76,0.08);
+  border:1px solid rgba(201,168,76,0.22);
+  border-radius:999px;
+  max-width:max-content;
+  margin: 0 auto 56px;
+  font-size:14px;
+}
+.pricing-callout strong{ color:var(--gold); font-weight:600; letter-spacing:.04em }
+.pricing-callout::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.18);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 4px rgba(201,168,76,0.18)}
+  50%{transform:scale(1.15);box-shadow:0 0 0 8px rgba(201,168,76,0.06)}
+}
+
+.plans{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:16px;
+  max-width:880px;margin-inline:auto;
+}
+@media (max-width:760px){ .plans{ grid-template-columns:1fr } }
+
+.plan{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding: 40px;
+  display:flex;flex-direction:column;gap:18px;
+  position:relative;overflow:hidden;
+}
+.plan--feature{
+  background: linear-gradient(180deg, rgba(201,168,76,0.08), rgba(201,168,76,0.0)) , var(--bg-card);
+  border-color: rgba(201,168,76,0.28);
+}
+.plan__name{ font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--text-muted) }
+.plan__price{
+  display:flex;align-items:baseline;gap:6px;
+  font-size:clamp(48px,5vw,72px);font-weight:700;letter-spacing:-0.03em;line-height:1;
+}
+.plan__price small{ font-size:16px;font-weight:400;color:var(--text-muted);letter-spacing:0 }
+.plan__desc{ color:var(--text-muted); font-weight:300; font-size:15px }
+.plan__list{ list-style:none; display:flex;flex-direction:column;gap:10px;margin-top:12px }
+.plan__list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14.5px;color:var(--text);
+}
+.plan__list li::before{
+  content:"";flex:0 0 16px;width:16px;height:16px;border-radius:50%;
+  background:rgba(201,168,76,0.18);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3.5 8.5L7 12l5.5-7' fill='none' stroke='%23C9A84C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;background-position:center;
+  margin-top:3px;
+}
+.plan .btn{ margin-top:auto }
+
+/* ----------------------------------------------------------------------
+   TESTIMONIALS
+   ---------------------------------------------------------------------- */
+.testimonials{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:16px;
+}
+@media (max-width:760px){ .testimonials{ grid-template-columns:1fr } }
+
+.tm{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding: 36px;
+  display:flex;flex-direction:column;gap:20px;
+  position:relative;
+}
+.tm__stars{ color:var(--gold); font-size:14px; letter-spacing:.2em }
+.tm__quote{
+  font-size:18px;
+  line-height:1.55;
+  font-weight:400;
+  letter-spacing:-0.005em;
+}
+.tm__author{
+  margin-top:auto;
+  display:flex;align-items:center;gap:14px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.tm__avatar{
+  width:44px;height:44px;border-radius:50%;
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright));
+  color:#0a0a0a;
+  display:grid;place-items:center;
+  font-weight:700;font-size:14px;letter-spacing:.04em;
+}
+.tm__meta{ display:flex;flex-direction:column;gap:2px }
+.tm__name{ font-size:14.5px;font-weight:600 }
+.tm__role{ font-size:12px;color:var(--text-muted);letter-spacing:.04em }
+
+/* ----------------------------------------------------------------------
+   GALLERY
+   ---------------------------------------------------------------------- */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 140px;
+  gap:10px;
+}
+.gtile{
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:#0a0a0a;
+  position:relative;overflow:hidden;
+  isolation:isolate;
+  transition: transform .5s var(--ease-out);
+}
+.gtile:hover{ transform:scale(1.01) }
+.gtile::after{
+  content:"";position:absolute;inset:0;
+  background: var(--ov, transparent);
+  mix-blend-mode: overlay;
+}
+.gtile span{
+  position:absolute;left:14px;bottom:12px;
+  font-size:10px;letter-spacing:.28em;
+  color:rgba(255,255,255,0.5);text-transform:uppercase;
+  z-index:2;
+}
+/* Grid cell sizing */
+.g1{ grid-column:span 3; grid-row:span 2 }
+.g2{ grid-column:span 3; grid-row:span 1 }
+.g3{ grid-column:span 2; grid-row:span 2 }
+.g4{ grid-column:span 2; grid-row:span 1 }
+.g5{ grid-column:span 2; grid-row:span 1 }
+.g6{ grid-column:span 4; grid-row:span 1 }
+.g7{ grid-column:span 2; grid-row:span 1 }
+@media (max-width:760px){
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px}
+  .g1,.g2,.g3,.g4,.g5,.g6,.g7{grid-column:span 1;grid-row:span 1}
+  .g1{grid-column:span 2;grid-row:span 2}
+}
+
+/* Tile backgrounds — atmospheric placeholders */
+.gA{ background:
+  radial-gradient(70% 70% at 30% 30%, #1f1a0e 0%, transparent 60%),
+  radial-gradient(60% 60% at 80% 80%, rgba(201,168,76,0.18), transparent 55%),
+  linear-gradient(135deg,#0e0e0e,#050505); }
+.gB{ background:
+  radial-gradient(80% 80% at 50% 50%, #1a1a1a, #050505); }
+.gC{ background:
+  conic-gradient(from 220deg at 60% 40%, #161310, #0c0c0c, #1a1408, #0c0c0c); }
+.gD{ background:
+  radial-gradient(60% 60% at 70% 30%, rgba(201,168,76,0.22), transparent 60%),
+  linear-gradient(180deg,#111,#000); }
+.gE{ background:
+  linear-gradient(160deg, #1a1a1a 0%, #0a0a0a 60%, #1a1a1a 100%); }
+.gF{ background:
+  radial-gradient(50% 100% at 50% 100%, rgba(201,168,76,0.18), transparent 60%),
+  linear-gradient(180deg,#0a0a0a,#0a0a0a); }
+.gG{ background:
+  radial-gradient(60% 80% at 20% 80%, #1a1408, transparent 60%),
+  linear-gradient(135deg,#0e0e0e,#000); }
+
+/* ----------------------------------------------------------------------
+   CONTACT
+   ---------------------------------------------------------------------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items:start;
+}
+@media (max-width:880px){ .contact-grid{ grid-template-columns:1fr } }
+
+.info-block{ display:flex;flex-direction:column;gap:28px }
+.info-row{
+  display:flex;align-items:flex-start;gap:18px;
+  padding-bottom:24px;border-bottom:1px solid var(--border);
+}
+.info-row:last-child{border-bottom:0}
+.info-row__icon{
+  flex:0 0 40px;width:40px;height:40px;
+  display:grid;place-items:center;
+  border:1px solid var(--border-strong);border-radius:12px;
+  color:var(--gold);
+}
+.info-row__label{
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:6px;
+}
+.info-row__val{ font-size:16px;font-weight:500;letter-spacing:-0.005em }
+.info-row__val a:hover{ color:var(--gold) }
+
+.map{
+  margin-top: 8px;
+  width:100%;aspect-ratio:16/10;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  overflow:hidden;
+  background:#0a0a0a;
+}
+.map iframe{ width:100%;height:100%;border:0;filter: invert(0.92) hue-rotate(180deg) saturate(0.6) brightness(0.85) }
+
+.form{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding: 36px;
+  display:flex;flex-direction:column;gap:18px;
+}
+.form__field{ display:flex;flex-direction:column;gap:8px }
+.form__field label{
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-muted);
+}
+.form__field input,
+.form__field textarea{
+  background:#0a0a0a;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding: 14px 16px;
+  color:var(--text);
+  font-size:15px;
+  outline:none;
+  transition: border-color .2s, background .2s;
+}
+.form__field input:focus,
+.form__field textarea:focus{
+  border-color: var(--gold);
+  background: #0c0c0c;
+}
+.form__field textarea{ min-height:130px; resize:vertical }
+.form .btn{ align-self:flex-start; margin-top:6px }
+
+/* ----------------------------------------------------------------------
+   FOOTER
+   ---------------------------------------------------------------------- */
+.footer{
+  background:#050505;
+  border-top:1px solid var(--border);
+  padding-block: 64px 28px;
+}
+.footer__top{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  align-items:start;
+  padding-bottom:48px;
+  border-bottom:1px solid var(--border);
+}
+@media (max-width:780px){
+  .footer__top{ grid-template-columns:1fr 1fr; gap:32px }
+}
+@media (max-width:480px){
+  .footer__top{ grid-template-columns:1fr }
+}
+.footer__brand{ display:flex;flex-direction:column;gap:18px;max-width:36ch }
+.footer__brand p{ color:var(--text-muted);font-size:14.5px;font-weight:300 }
+.footer__col h4{
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600;margin-bottom:14px;
+}
+.footer__col ul{ list-style:none;display:flex;flex-direction:column;gap:8px }
+.footer__col a{ color:var(--text);font-size:14.5px }
+.footer__col a:hover{ color:var(--gold) }
+.footer__bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-top:28px;
+  font-size:12px;color:var(--text-dim);letter-spacing:.04em;
+  flex-wrap:wrap;
+}
+.socials{ display:flex;gap:10px }
+.socials a{
+  width:36px;height:36px;display:grid;place-items:center;
+  border:1px solid var(--border);border-radius:50%;
+  color:var(--text-muted);
+  transition: border-color .2s, color .2s;
+}
+.socials a:hover{ border-color:var(--gold); color:var(--gold) }
+
+/* ----------------------------------------------------------------------
+   SCROLL FADE-IN
+   ---------------------------------------------------------------------- */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+.reveal.is-visible{ opacity:1; transform:none }
+
+/* Stagger inside grids */
+.reveal-stagger > *{
+  opacity:0; transform:translateY(20px);
+  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+}
+.reveal-stagger.is-visible > *{ opacity:1; transform:none }
+.reveal-stagger.is-visible > *:nth-child(1){ transition-delay:.05s }
+.reveal-stagger.is-visible > *:nth-child(2){ transition-delay:.12s }
+.reveal-stagger.is-visible > *:nth-child(3){ transition-delay:.19s }
+.reveal-stagger.is-visible > *:nth-child(4){ transition-delay:.26s }
+.reveal-stagger.is-visible > *:nth-child(5){ transition-delay:.33s }
+.reveal-stagger.is-visible > *:nth-child(6){ transition-delay:.4s  }
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation:none !important; transition:none !important }
+  .reveal, .reveal-stagger > *{ opacity:1; transform:none }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand brand" aria-label="Insomnia Jiu Jitsu — home">
+      <span class="brand__text">INS</span>
+      <span class="brand__eye" aria-hidden="true">
+        <svg viewBox="0 0 100 60" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%">
+          <path d="M6 30 L26 12 M6 30 L26 48 M94 30 L74 12 M94 30 L74 48"/>
+          <circle cx="50" cy="30" r="14"/>
+          <circle cx="50" cy="30" r="5" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="brand__text">MNIA</span>
+    </a>
+
+    <div class="nav__links" role="navigation">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#instructors">Instructors</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a href="#contact" class="nav__cta">Free Trial</a>
+
+    <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile sheet — sibling of <nav> so it gets the viewport as its containing block -->
+<div class="mobile-sheet" id="mobileSheet" aria-hidden="true">
+  <a href="#about">About</a>
+  <a href="#programs">Programs</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#instructors">Instructors</a>
+  <a href="#competition">Competition</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn--primary">Start your free trial</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header id="top" class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__inner reveal">
+      <span class="eyebrow hero__eyebrow">Daytona Beach · Brazilian Jiu Jitsu</span>
+      <h1 class="hero__title">
+        Where champions<br/>are built and<br/><em>beginners belong.</em>
+      </h1>
+      <p class="hero__sub">
+        A serious gym. A welcoming room. Train the world's most effective grappling art with people who'll treat you like family from day one.
+      </p>
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn--primary btn--lg">Start your free trial</a>
+        <a href="#programs" class="btn btn--ghost btn--lg">See programs</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">Scroll</div>
+</header>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section about">
+  <div class="container container--narrow">
+    <div class="reveal">
+      <span class="eyebrow">Our story</span>
+      <h2 class="h1 about__title">Built in Daytona.<br/>Sharpened on the mats.</h2>
+      <p class="lede about__lede">
+        Insomnia Jiu Jitsu is a Daytona Beach gym for people who take this seriously — and for people who've never set foot on a mat. Whether you're here to lose weight, learn self-defense, sharpen your edge for competition, or just find something better than scrolling at night, you'll find a room of training partners who actually want you to get better. We believe technique beats strength, attention to detail beats ego, and a welcoming room beats every other gym in town.
+      </p>
+    </div>
+
+    <div class="about__stats reveal-stagger">
+      <div class="stat">
+        <div class="stat__num">10+</div>
+        <span class="stat__label">Years coaching</span>
+      </div>
+      <div class="stat">
+        <div class="stat__num">5</div>
+        <span class="stat__label">Classes a week</span>
+      </div>
+      <div class="stat">
+        <div class="stat__num">All</div>
+        <span class="stat__label">Levels welcome</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROGRAMS
+     ============================================================ -->
+<section id="programs" class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Programs</span>
+      <h2 class="h1">Find your room.</h2>
+      <p>Four ways to train at Insomnia. Every program is open to every member — start where you're comfortable and grow from there.</p>
+    </div>
+
+    <div class="programs-grid reveal-stagger">
+      <article class="prog-card">
+        <div>
+          <div class="prog-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 11l8 4 8-4"/><path d="M4 15l8 4 8-4"/></svg>
+          </div>
+          <h3 class="h3 prog-card__title">Adult BJJ — Gi & No-Gi</h3>
+          <p class="prog-card__desc">A complete program for adults of any experience level. Drill fundamentals, learn techniques layered for retention, then test them in live rounds with partners who match your pace.</p>
+        </div>
+        <div class="prog-card__meta">All levels · Mon–Fri</div>
+      </article>
+
+      <article class="prog-card">
+        <div>
+          <div class="prog-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <h3 class="h3 prog-card__title">Kids BJJ</h3>
+          <p class="prog-card__desc">Confidence, discipline, and real grappling for the next generation. A safe, structured class led by coaches who understand kids.</p>
+        </div>
+        <div class="prog-card__meta">Ages 6–14 · Coming soon — ask us</div>
+      </article>
+
+      <article class="prog-card">
+        <div>
+          <div class="prog-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.4L21 9l-5 4.4L17.6 21 12 17.4 6.4 21 8 13.4 3 9l6.4-.6L12 2z"/></svg>
+          </div>
+          <h3 class="h3 prog-card__title">Competition Team</h3>
+          <p class="prog-card__desc">Train alongside athletes preparing for IBJJF and local tournaments. Sharper drilling, harder rounds, and real coaching through a competitive season.</p>
+        </div>
+        <div class="prog-card__meta">By invitation · See coaches</div>
+      </article>
+
+      <article class="prog-card">
+        <div>
+          <div class="prog-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+          </div>
+          <h3 class="h3 prog-card__title">Open Mat</h3>
+          <p class="prog-card__desc">Unstructured rolling time. Bring your questions, work the position you've been struggling with, and roll with whoever's there. Open to members and visiting grapplers.</p>
+        </div>
+        <div class="prog-card__meta">Members & guests</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCHEDULE
+     ============================================================ -->
+<section id="schedule" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Weekly schedule</span>
+      <h2 class="h1">Five days. Seven hours of mat time.</h2>
+      <p>Built for people with jobs and families. Show up to whatever fits this week — there's no minimum and no judgment.</p>
+    </div>
+
+    <div class="schedule reveal-stagger">
+      <!-- Monday -->
+      <div class="day day--accent">
+        <div class="day__name">Mon</div>
+        <div class="slot">
+          <div class="slot__time">6:00 – 7:00 PM</div>
+          <div class="slot__title">No-Gi · All Levels</div>
+        </div>
+        <div class="slot">
+          <div class="slot__time">7:00 – 8:00 PM</div>
+          <div class="slot__title">No-Gi · Advanced<br/><span class="muted" style="font-size:12px;font-weight:400">All welcome</span></div>
+        </div>
+      </div>
+
+      <!-- Tuesday -->
+      <div class="day">
+        <div class="day__name">Tue</div>
+        <div class="slot--ghost slot">Rest</div>
+        <div class="slot">
+          <div class="slot__time">7:00 – 8:00 PM</div>
+          <div class="slot__title">Gi Rolling</div>
+        </div>
+      </div>
+
+      <!-- Wednesday -->
+      <div class="day day--accent">
+        <div class="day__name">Wed</div>
+        <div class="slot">
+          <div class="slot__time">6:00 – 7:00 PM</div>
+          <div class="slot__title">No-Gi · All Levels</div>
+        </div>
+        <div class="slot">
+          <div class="slot__time">7:00 – 8:00 PM</div>
+          <div class="slot__title">No-Gi · Advanced<br/><span class="muted" style="font-size:12px;font-weight:400">All welcome</span></div>
+        </div>
+      </div>
+
+      <!-- Thursday -->
+      <div class="day">
+        <div class="day__name">Thu</div>
+        <div class="slot--ghost slot">Rest</div>
+        <div class="slot">
+          <div class="slot__time">7:00 – 8:00 PM</div>
+          <div class="slot__title">Gi Rolling</div>
+        </div>
+      </div>
+
+      <!-- Friday -->
+      <div class="day day--accent">
+        <div class="day__name">Fri</div>
+        <div class="slot">
+          <div class="slot__time">6:00 – 7:00 PM</div>
+          <div class="slot__title">No-Gi · All Levels</div>
+        </div>
+        <div class="slot">
+          <div class="slot__time">7:00 – 8:00 PM</div>
+          <div class="slot__title">No-Gi · Advanced<br/><span class="muted" style="font-size:12px;font-weight:400">All welcome</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INSTRUCTORS
+     ============================================================ -->
+<section id="instructors" class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Coaches</span>
+      <h2 class="h1">Meet the team.</h2>
+      <p>Three coaches. One philosophy: technique over force, detail over ego, growth at every level.</p>
+    </div>
+
+    <div class="instructors reveal-stagger">
+      <!-- Jessie -->
+      <article class="coach coach--black">
+        <div class="coach__portrait" aria-hidden="true">
+          <span class="coach__monogram">JG</span>
+          <div class="coach__belt"></div>
+        </div>
+        <div class="coach__body">
+          <span class="coach__rank">Black Belt · Head Instructor & Owner</span>
+          <h3 class="coach__name">Jessie Grace</h3>
+          <p class="coach__bio">Jessie built Insomnia from the ground up in Daytona Beach. Ten-plus years on the mats, decorated competitor, and a coach known for careful, detail-driven instruction that meets every student where they are. Safety, technique, and steady progress are the cornerstones of how she teaches.</p>
+          <div class="coach__creds">
+            <span class="cred">Gold · IBJJF Pan Ams</span>
+            <span class="cred">Bronze · No-Gi Worlds</span>
+            <span class="cred">Silver · Abu Dhabi Pro No-Gi (Black)</span>
+            <span class="cred">Gold · IBJJF Memphis</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sadiq -->
+      <article class="coach coach--brown">
+        <div class="coach__portrait" aria-hidden="true">
+          <span class="coach__monogram">SM</span>
+          <div class="coach__belt"></div>
+        </div>
+        <div class="coach__body">
+          <span class="coach__rank">Brown Belt · Coach</span>
+          <h3 class="coach__name">Sadiq Muhammad</h3>
+          <p class="coach__bio">Sadiq is the technician of the room. He breaks positions down to the smallest details and rebuilds them step by step until you actually feel the lever click. Patient with new students, sharp with advanced ones, and quietly responsible for half the breakthroughs that happen here.</p>
+        </div>
+      </article>
+
+      <!-- David -->
+      <article class="coach coach--purple">
+        <div class="coach__portrait" aria-hidden="true">
+          <span class="coach__monogram">DW</span>
+          <div class="coach__belt"></div>
+        </div>
+        <div class="coach__body">
+          <span class="coach__rank">Purple Belt · Coach</span>
+          <h3 class="coach__name">David Welle</h3>
+          <p class="coach__bio">David is the energy of the gym. He remembers what your first month felt like and coaches like it. Newer students gravitate to him because he makes the hard parts feel doable — and the wins feel earned. Growth mindset by default, every class, every round.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPETITION
+     ============================================================ -->
+<section id="competition" class="section comp">
+  <div class="comp__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="comp__grid">
+      <div class="comp__text reveal">
+        <span class="eyebrow">Competition team</span>
+        <h2 class="h1">If you want to compete,<br/>we'll get you there.</h2>
+        <p class="lede">
+          Insomnia's competition team trains alongside the regular program with sharper expectations: harder rounds, structured drilling, and real coaching through tournament season. We compete IBJJF, NAGA, and local Florida events. You don't need to be a phenom to join — you need to be coachable, consistent, and willing to lose well before you win.
+        </p>
+        <a href="#contact" class="btn btn--primary btn--lg comp__cta">Talk to a coach</a>
+      </div>
+
+      <div class="podium reveal" aria-hidden="true">
+        <div class="podium__medal">1<span style="font-size:9px;letter-spacing:.1em">ST</span></div>
+        <h3 class="podium__title">A culture<br/>of <em>showing up.</em></h3>
+        <ul class="podium__list">
+          <li><span>IBJJF Pan Ams</span><span>Gold</span></li>
+          <li><span>No-Gi Worlds</span><span>Bronze</span></li>
+          <li><span>Abu Dhabi Pro No-Gi (Black)</span><span>Silver</span></li>
+          <li><span>IBJJF Orlando</span><span>Bronze</span></li>
+          <li><span>Local opens & supersessions</span><span>Year-round</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA — MID PAGE
+     ============================================================ -->
+<section class="cta-banner">
+  <div class="container container--narrow reveal">
+    <h2>Your first class<br/>is on us.</h2>
+    <p class="lede" style="margin-inline:auto">Come see what Insomnia is about. Walk in, shake hands, train. Decide after.</p>
+    <a href="#contact" class="btn btn--primary btn--lg">Claim your free class</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Memberships</span>
+      <h2 class="h1">Simple pricing.<br/>Nothing locked.</h2>
+      <p>No annual contracts. No initiation fee. No upsells.</p>
+    </div>
+
+    <div class="pricing-callout reveal">
+      <span><strong>First class free</strong> — every visitor, every time.</span>
+    </div>
+
+    <div class="plans reveal-stagger">
+      <article class="plan plan--feature">
+        <span class="plan__name">Monthly</span>
+        <div class="plan__price">$120<small>/mo</small></div>
+        <p class="plan__desc">Unlimited classes across every program. The way most members train.</p>
+        <ul class="plan__list">
+          <li>All Adult BJJ classes (Gi & No-Gi)</li>
+          <li>Open mat access</li>
+          <li>Eligibility for the competition team</li>
+          <li>Bring a friend to open mat anytime</li>
+        </ul>
+        <a href="#contact" class="btn btn--primary">Start training</a>
+      </article>
+
+      <article class="plan">
+        <span class="plan__name">Drop-In</span>
+        <div class="plan__price">$20<small>/class</small></div>
+        <p class="plan__desc">No commitment. Perfect for travelers, visitors, and anyone testing the waters.</p>
+        <ul class="plan__list">
+          <li>Pay per class, no membership required</li>
+          <li>Welcomed in any class on the schedule</li>
+          <li>Standard liability waiver on first visit</li>
+          <li>Cash or card at the door</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost">Plan a visit</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">From the mats</span>
+      <h2 class="h1">What our members say.</h2>
+    </div>
+
+    <div class="testimonials reveal-stagger">
+      <figure class="tm">
+        <div class="tm__stars">★★★★★</div>
+        <blockquote class="tm__quote">"I walked in with zero experience and left my first class actually wanting to come back. Everyone introduced themselves. Nobody tried to wreck me. Coach broke things down clearly. I'm three months in and I haven't missed a week."</blockquote>
+        <figcaption class="tm__author">
+          <div class="tm__avatar">MC</div>
+          <div class="tm__meta">
+            <span class="tm__name">Marcus C.</span>
+            <span class="tm__role">White belt · 3 months in</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="tm">
+        <div class="tm__stars">★★★★★</div>
+        <blockquote class="tm__quote">"I've trained at four gyms across two states. Insomnia is the first one that felt like family from day one. The coaching is detail-obsessed and the rolls are honest — exactly what I wanted."</blockquote>
+        <figcaption class="tm__author">
+          <div class="tm__avatar">RT</div>
+          <div class="tm__meta">
+            <span class="tm__name">Renata T.</span>
+            <span class="tm__role">Blue belt</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="tm">
+        <div class="tm__stars">★★★★★</div>
+        <blockquote class="tm__quote">"I came for fitness and stayed because of the people. Lost 22 pounds in my first six months and gained a room full of friends I now train with three nights a week."</blockquote>
+        <figcaption class="tm__author">
+          <div class="tm__avatar">JD</div>
+          <div class="tm__meta">
+            <span class="tm__name">Josh D.</span>
+            <span class="tm__role">Member · 1 year</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="tm">
+        <div class="tm__stars">★★★★★</div>
+        <blockquote class="tm__quote">"As a woman starting jiu jitsu, I was nervous. Jessie made the room feel safe immediately. I roll harder here than I ever did at my old gym, and I trust the partners I'm rolling with. That's everything."</blockquote>
+        <figcaption class="tm__author">
+          <div class="tm__avatar">AS</div>
+          <div class="tm__meta">
+            <span class="tm__name">Amelia S.</span>
+            <span class="tm__role">White belt · 6 months in</span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2 class="h1">Inside the room.</h2>
+      <p>A look at the mats, the team, and life at Insomnia. Follow <a href="https://www.instagram.com/insomniajiujitsu/" target="_blank" rel="noopener" style="color:var(--gold);">@insomniajiujitsu</a> for more.</p>
+    </div>
+
+    <div class="gallery reveal-stagger" aria-label="Gym photos">
+      <div class="gtile gA g1"><span>The Mats</span></div>
+      <div class="gtile gB g2"><span>Open Mat Sundays</span></div>
+      <div class="gtile gC g3"><span>Comp Team</span></div>
+      <div class="gtile gD g4"><span>Drilling</span></div>
+      <div class="gtile gE g5"><span>Live Rolls</span></div>
+      <div class="gtile gF g6"><span>Tournament Day</span></div>
+      <div class="gtile gG g7"><span>Family</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA — END OF PAGE
+     ============================================================ -->
+<section class="cta-banner">
+  <div class="container container--narrow reveal">
+    <h2>Come roll<br/>with us.</h2>
+    <p class="lede" style="margin-inline:auto">Bring shorts and a t-shirt. We'll handle the rest.</p>
+    <a href="#contact" class="btn btn--primary btn--lg">Book your free class</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2 class="h1">Visit. Train. Decide.</h2>
+      <p>1128 Beville Rd, Unit E. Behind Aldi, off the main strip. Free parking, no airs.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info-block reveal">
+        <div class="info-row">
+          <div class="info-row__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.5-7-13a7 7 0 0114 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <div class="info-row__label">Address</div>
+            <div class="info-row__val">1128 Beville Rd, Unit E<br/>Daytona Beach, FL 32114<br/><span class="muted" style="font-size:13px;font-weight:400">Behind Aldi</span></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div>
+            <div class="info-row__label">Hours</div>
+            <div class="info-row__val">
+              Mon · Wed · Fri &nbsp;<span class="muted">6:00 – 8:00 PM</span><br/>
+              Tue · Thu &nbsp;<span class="muted">7:00 – 8:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <div>
+            <div class="info-row__label">Email</div>
+            <div class="info-row__val"><a href="mailto:insomniabjj@gmail.com">insomniabjj@gmail.com</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-row__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </div>
+          <div>
+            <div class="info-row__label">Instagram</div>
+            <div class="info-row__val"><a href="https://www.instagram.com/insomniajiujitsu/" target="_blank" rel="noopener">@insomniajiujitsu</a></div>
+          </div>
+        </div>
+
+        <div class="map" aria-label="Map to Insomnia Jiu Jitsu">
+          <iframe
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=1128+Beville+Rd+Unit+E,+Daytona+Beach,+FL+32114&output=embed"
+            title="Insomnia Jiu Jitsu — 1128 Beville Rd, Daytona Beach, FL"></iframe>
+        </div>
+      </div>
+
+      <form class="form reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks — we\\'ll be in touch.'; this.reset();">
+        <div class="form__field">
+          <label for="f-name">Name</label>
+          <input id="f-name" type="text" name="name" required autocomplete="name" />
+        </div>
+        <div class="form__field">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" name="email" required autocomplete="email" />
+        </div>
+        <div class="form__field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" placeholder="Tell us a bit about yourself — any experience, what you're hoping to get out of training, anything we should know." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="#top" class="brand brand--lg" aria-label="Insomnia Jiu Jitsu">
+          <span class="brand__text">INS</span>
+          <span class="brand__eye" aria-hidden="true">
+            <svg viewBox="0 0 100 60" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="100%" height="100%">
+              <path d="M6 30 L26 12 M6 30 L26 48 M94 30 L74 12 M94 30 L74 48"/>
+              <circle cx="50" cy="30" r="14"/>
+              <circle cx="50" cy="30" r="5" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+          <span class="brand__text">MNIA</span>
+        </a>
+        <p>Brazilian Jiu Jitsu in Daytona Beach, Florida. Where champions are built and beginners belong.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Train</h4>
+        <ul>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#instructors">Instructors</a></li>
+          <li><a href="#competition">Competition</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Membership</h4>
+        <ul>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Free trial</a></li>
+          <li><a href="#contact">Drop in</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#contact">Address & map</a></li>
+          <li><a href="mailto:insomniabjj@gmail.com">Email us</a></li>
+          <li><a href="https://www.instagram.com/insomniajiujitsu/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Insomnia Jiu Jitsu · 1128 Beville Rd, Unit E, Daytona Beach, FL</span>
+      <div class="socials">
+        <a href="https://www.instagram.com/insomniajiujitsu/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8h-3a1 1 0 00-1 1v3h4l-1 4h-3v8H8v-8H5v-4h3V9a4 4 0 014-4h4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Sticky nav scrolled state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 12) nav.classList.add('is-scrolled');
+    else nav.classList.remove('is-scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const sheet = document.getElementById('mobileSheet');
+  const setOpen = (open) => {
+    document.body.classList.toggle('is-mobile-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    sheet.setAttribute('aria-hidden', open ? 'false' : 'true');
+  };
+  burger.addEventListener('click', () => setOpen(!document.body.classList.contains('is-mobile-open')));
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
