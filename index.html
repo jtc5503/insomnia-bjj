@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="theme-color" content="#000000" />
 <title>Insomnia Jiu Jitsu — Daytona Beach</title>
-<meta name="description" content="Where champions are built and beginners belong. Brazilian Jiu Jitsu in Daytona Beach, Florida. Your first class is on us." />
+<meta name="description" content="Where champions are built and beginners belong. Jiu Jitsu in Daytona Beach, Florida. Your first class is on us." />
 
 <!-- Favicon: the eye mark as an inline SVG data URI -->
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><rect width="100" height="60" fill="black"/><g fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L26 12 M6 30 L26 48 M94 30 L74 12 M94 30 L74 48"/><circle cx="50" cy="30" r="14"/></g><circle cx="50" cy="30" r="5" fill="white"/></svg>' />
@@ -847,7 +847,7 @@ body.is-mobile-open{
   gap:16px;
   max-width:880px;margin-inline:auto;
 }
-@media (max-width:760px){ .plans{ grid-template-columns:1fr } }
+@media (max-width:760px){ .plans{ grid-template-columns:1fr; max-width:560px } }
 
 .plan{
   background:var(--bg-card);
@@ -867,6 +867,13 @@ body.is-mobile-open{
   font-size:clamp(48px,5vw,72px);font-weight:700;letter-spacing:-0.03em;line-height:1;
 }
 .plan__price small{ font-size:16px;font-weight:400;color:var(--text-muted);letter-spacing:0 }
+.plan__discount{
+  margin-top:-8px;
+  font-size:13px;
+  color:var(--text-muted);
+  letter-spacing:.01em;
+}
+.plan__discount strong{ color:var(--gold); font-weight:600 }
 .plan__desc{ color:var(--text-muted); font-weight:300; font-size:15px }
 .plan__list{ list-style:none; display:flex;flex-direction:column;gap:10px;margin-top:12px }
 .plan__list li{
@@ -1233,7 +1240,7 @@ body.is-mobile-open{
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__inner reveal">
-      <span class="eyebrow hero__eyebrow">Daytona Beach · Brazilian Jiu Jitsu</span>
+      <span class="eyebrow hero__eyebrow">Daytona Beach · Jiu Jitsu</span>
       <h1 class="hero__title">
         Where champions<br/>are built and<br/><em>beginners belong.</em>
       </h1>
@@ -1550,6 +1557,7 @@ body.is-mobile-open{
       <article class="plan plan--feature">
         <span class="plan__name">Monthly</span>
         <div class="plan__price">$120<small>/mo</small></div>
+        <div class="plan__discount">First responders <strong>$110/mo</strong></div>
         <p class="plan__desc">Unlimited classes across every program. The way most members train.</p>
         <ul class="plan__list">
           <li>All Adult BJJ classes (Gi & No-Gi)</li>
@@ -1749,7 +1757,7 @@ body.is-mobile-open{
         </div>
       </div>
 
-      <form class="form reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks — we\\'ll be in touch.'; this.reset();">
+      <form class="form reveal" id="contact-form" novalidate>
         <div class="form__field">
           <label for="f-name">Name</label>
           <input id="f-name" type="text" name="name" required autocomplete="name" />
@@ -1786,7 +1794,7 @@ body.is-mobile-open{
           </span>
           <span class="brand__text">MNIA</span>
         </a>
-        <p>Brazilian Jiu Jitsu in Daytona Beach, Florida. Where champions are built and beginners belong.</p>
+        <p>Jiu Jitsu in Daytona Beach, Florida. Where champions are built and beginners belong.</p>
       </div>
 
       <div class="footer__col">
@@ -1823,9 +1831,6 @@ body.is-mobile-open{
       <div class="socials">
         <a href="https://www.instagram.com/insomniajiujitsu/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        </a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8h-3a1 1 0 00-1 1v3h4l-1 4h-3v8H8v-8H5v-4h3V9a4 4 0 014-4h4z"/></svg>
         </a>
       </div>
     </div>
@@ -1866,6 +1871,39 @@ body.is-mobile-open{
     }
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  // Contact form -> mailto
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm){
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      const name = (data.get('name') || '').toString().trim();
+      const email = (data.get('email') || '').toString().trim();
+      const message = (data.get('message') || '').toString().trim();
+
+      // Basic validation — surface native messages if anything's missing
+      if (!name || !email || !message){
+        contactForm.reportValidity();
+        return;
+      }
+
+      const subject = encodeURIComponent(`Trial inquiry — ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}\n\n— Sent from insomniabjj.com`
+      );
+
+      const btn = contactForm.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.textContent = 'Opening your email…';
+      btn.disabled = true;
+
+      window.location.href = `mailto:insomniabjj@gmail.com?subject=${subject}&body=${body}`;
+
+      // Restore button after a moment in case the user comes back to the tab
+      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 2200);
+    });
+  }
 </script>
 
 </body>
