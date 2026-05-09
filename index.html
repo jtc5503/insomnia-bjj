@@ -8,7 +8,7 @@
 <meta name="description" content="Where champions are built and beginners belong. Jiu Jitsu in Daytona Beach, Florida. Your first class is on us." />
 
 <!-- Favicon: the eye mark as an inline SVG data URI -->
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><rect width="100" height="60" fill="black"/><g fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L26 12 M6 30 L26 48 M94 30 L74 12 M94 30 L74 48"/><circle cx="50" cy="30" r="14"/></g><circle cx="50" cy="30" r="5" fill="white"/></svg>' />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><rect width="100" height="60" fill="black"/><g fill="none" stroke="%23C9A84C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L26 12 M6 30 L26 48 M94 30 L74 12 M94 30 L74 48"/><circle cx="50" cy="30" r="14"/></g><circle cx="50" cy="30" r="5" fill="%23C9A84C"/></svg>' />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,6 +58,7 @@ html{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   scroll-behavior:smooth;
+  scroll-padding-top: 60px;
 }
 body{
   font-family:'Manrope', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
@@ -169,6 +170,7 @@ body::before{
      from S's trailing letter-spacing. Mirror that on the right side here. */
   margin: 0 0.32em 0 0;
   position:relative;top:.02em;
+  color: var(--gold);
 }
 .brand--lg{font-size:24px;letter-spacing:.34em}
 .brand--xl{font-size:clamp(40px,7vw,88px);letter-spacing:.22em;font-weight:200}
@@ -385,6 +387,9 @@ body.is-mobile-open{
   background-clip:text;
   color:transparent;
   margin-bottom: 28px;
+}
+@media (max-width: 700px){
+  .hero__title{ line-height: 1.05 }
 }
 .hero__title em{
   font-style:normal;
@@ -1556,8 +1561,8 @@ body.is-mobile-open{
     <div class="plans reveal-stagger">
       <article class="plan plan--feature">
         <span class="plan__name">Monthly</span>
-        <div class="plan__price">$120<small>/mo</small></div>
-        <div class="plan__discount">First responders <strong>$110/mo</strong></div>
+        <div class="plan__price">$129<small>/mo</small></div>
+        <div class="plan__discount">Students, military &amp; first responders <strong>$119/mo</strong></div>
         <p class="plan__desc">Unlimited classes across every program. The way most members train.</p>
         <ul class="plan__list">
           <li>All Adult BJJ classes (Gi & No-Gi)</li>
@@ -1859,7 +1864,26 @@ body.is-mobile-open{
     sheet.setAttribute('aria-hidden', open ? 'false' : 'true');
   };
   burger.addEventListener('click', () => setOpen(!document.body.classList.contains('is-mobile-open')));
-  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+
+  // Mobile sheet links — close, then manually smooth-scroll with nav offset
+  // (default anchor nav fights the scroll-lock release on iOS)
+  sheet.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href') || '';
+      setOpen(false);
+      if (href.startsWith('#') && href.length > 1) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          // Small delay lets body lose `overflow:hidden` before we scroll
+          setTimeout(() => {
+            const y = target.getBoundingClientRect().top + window.pageYOffset - 60;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 60);
+        }
+      }
+    });
+  });
 
   // Reveal-on-scroll
   const io = new IntersectionObserver((entries) => {
@@ -1890,7 +1914,7 @@ body.is-mobile-open{
 
       const subject = encodeURIComponent(`Trial inquiry — ${name}`);
       const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\n${message}\n\n— Sent from insomniajj.com`
+        `Name: ${name}\nEmail: ${email}\n\n${message}\n\n— Sent from insomniabjj.com`
       );
 
       const btn = contactForm.querySelector('button[type="submit"]');
